@@ -23,9 +23,23 @@ public class Assignment2 {
      */
     public String numberLoops(int n) {
         // Todo: your code goes here
+        String pattern = "";
 
-        return null;
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n; j++) {
+                if (n - j + 1 <= i) {
+                    pattern += Integer.toString(i);
+                } else {
+                    pattern += ".";
+                }
+            }
+            if (i < n) {
+                pattern += "\n";
+            }
+        }
+        return pattern;
     }
+
 
     /**
      * Given an array of integers, return true if the number of 1s is greater than the number of 7s
@@ -34,8 +48,23 @@ public class Assignment2 {
      */
     public boolean countNumbers(int[] nums) {
         // Todo: your code goes here
+        boolean onesGreater = false;
 
-        return false;
+        int oneNumber = 0;
+        int sevenNumber = 0;
+
+        for (int i = 0; i <= nums.length - 1; i++) {
+            if (nums[i] == 1) {
+                oneNumber += 1;
+            }
+            if (nums[i] == 7) {
+                sevenNumber += 1;
+            }
+        }
+        if (sevenNumber < oneNumber) {
+            onesGreater = true;
+        }
+        return onesGreater;
     }
 
     /**
@@ -52,8 +81,16 @@ public class Assignment2 {
      */
     public int sumExcept13(int[] nums) {
         // Todo: your code goes here
-
-        return 0;
+        int sum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] == 13) {
+                sum = sum + 0;
+                i += 1;
+            } else {
+                sum = sum + nums[i];
+            }
+        }
+        return sum;
     }
 
     /**
@@ -69,8 +106,15 @@ public class Assignment2 {
      */
     public int[] shiftArray(int[] nums) {
         // Todo: your code goes here
-
-        return null;
+        int[] shiftedArray = new int[nums.length];
+        if (nums.length == 0) {
+            return shiftedArray;
+        }
+        for (int i = 0; i < nums.length - 1; i++) {
+            shiftedArray[i] = nums[i + 1];
+        }
+        shiftedArray[shiftedArray.length - 1] = nums[0];
+        return shiftedArray;
     }
 
     /**
@@ -80,8 +124,19 @@ public class Assignment2 {
      */
     public boolean tripleIncreasingOrder(int[] nums) {
         // Todo: your code goes here
-
-        return false;
+        int count = 0;
+        for (int i = 0; i <= nums.length - 3; i++) {
+            if (nums[i] == (nums[i + 1] - 1) && nums[i] == (nums[i + 2] - 2)) {
+                count += 1;
+            } else {
+                count = count;
+            }
+        }
+        if (count >= 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -91,8 +146,20 @@ public class Assignment2 {
      */
     public boolean evenOrOdd(int[] nums){
         // Todo: your code goes here
-
-        return false;
+        int oddCount = 0;
+        int evenCount = 0;
+        for (int i = 0; i <= nums.length-1; i++) {
+            if (nums[i] % 2 == 0) {
+                evenCount += 1;
+            } else {
+                oddCount += 1;
+            }
+        }
+        if (evenCount == oddCount) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
